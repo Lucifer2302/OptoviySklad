@@ -1,0 +1,38 @@
+﻿<Window x:Class="OptoviySklad.View.Windows.SbrosParolya2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OptoviySklad.View.Windows"
+        mc:Ignorable="d"
+        Title="SbrosParolya2" Height="800" Width="360">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Image Source="/Resourses/Images/1626195553_17-kartinkin-com-p-temnii-fon-dlya-prilozheniya-krasivo-17.jpg" Grid.RowSpan="9" Stretch="Fill"/>
+
+
+
+        <TextBlock Foreground="White" Text="Сброс пароля" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+        <Label Content="Введите новый пароль" FontSize="25" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox Grid.Row="1" VerticalAlignment="Bottom" FontSize="25"/>
+
+        <Label Content="Подтвердить пароль" FontSize="25" Grid.Row="2" VerticalAlignment="Top"/>
+        <TextBox Grid.Row="2" VerticalAlignment="Bottom" FontSize="25"/>
+
+        <Button Margin="20 10 20 10" Content="Сохранить" Grid.Row="3" FontSize="25" Click="Button_Click"/>
+        <Button Margin="20 10 20 10" Content="Назад" Grid.Row="4" FontSize="25" Click="Button_Click_1"/>
+
+
+
+    </Grid>
+</Window>
