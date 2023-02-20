@@ -35,10 +35,12 @@ namespace OptoviySklad.View.Windows
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            foreach (ListViewItem eachItem in GridVahSklad.SelectedItems)
-            {
-                GridVahSklad.Items.Remove(eachItem);
-            }
+
+            GridVahSklad.ItemsSource = "";
+            //foreach (ListViewItem eachItem in GridVahSklad.SelectedItems)
+            //{
+            //    GridVahSklad.Items.Remove(eachItem);
+            //}
 
         }
     }
