@@ -1,0 +1,156 @@
+вUSE [master]
+GO
+/****** Object:  Database [Koshevoi_SkladMobile]    Script Date: 20.02.2023 14:05:56 ******/
+CREATE DATABASE [Koshevoi_SkladMobile]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'Koshevoi_SkladMobile', FILENAME = N'D:\User\Koshevoi_SkladMobile.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 10%)
+ LOG ON 
+( NAME = N'Koshevoi_SkladMobile_log', FILENAME = N'D:\User\Koshevoi_SkladMobile_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET COMPATIBILITY_LEVEL = 140
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [Koshevoi_SkladMobile].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET  MULTI_USER 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET TARGET_RECOVERY_TIME = 0 SECONDS 
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET DELAYED_DURABILITY = DISABLED 
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'Koshevoi_SkladMobile', N'ON'
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET QUERY_STORE = OFF
+GO
+USE [Koshevoi_SkladMobile]
+GO
+/****** Object:  Table [dbo].[Profile]    Script Date: 20.02.2023 14:05:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Profile](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Login] [nvarchar](50) NULL,
+	[Password] [nvarchar](50) NULL,
+	[Email] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Profile] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Sklad]    Script Date: 20.02.2023 14:05:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Sklad](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Tovar] [varchar](50) NULL,
+	[Price] [varchar](50) NULL,
+	[Image] [varbinary](max) NULL,
+ CONSTRAINT [PK_Sklad] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Sklad_User]    Script Date: 20.02.2023 14:05:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Sklad_User](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[idTovar] [int] NULL,
+ CONSTRAINT [PK_Sklad_User] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Profile] ON 
+
+INSERT [dbo].[Profile] ([id], [Login], [Password], [Email]) VALUES (1, N'Empty', N'123', N'zkosshevoy6@mail.ru')
+INSERT [dbo].[Profile] ([id], [Login], [Password], [Email]) VALUES (2, N'123', N'123', N'zx')
+INSERT [dbo].[Profile] ([id], [Login], [Password], [Email]) VALUES (3, N'Паша', N'qwerty', N'pavel@mail.ru')
+INSERT [dbo].[Profile] ([id], [Login], [Password], [Email]) VALUES (4, N'123', N'4321', N'fylhtq@mail.ru')
+SET IDENTITY_INSERT [dbo].[Profile] OFF
+SET IDENTITY_INSERT [dbo].[Sklad] ON 
+
+INSERT [dbo].[Sklad] ([id], [Tovar], [Price], [Image]) VALUES (1, N'Мыло', N'100', NULL)
+INSERT [dbo].[Sklad] ([id], [Tovar], [Price], [Image]) VALUES (2, N'Мазь', N'150', NULL)
+INSERT [dbo].[Sklad] ([id], [Tovar], [Price], [Image]) VALUES (3, N'Крем', N'200', NULL)
+INSERT [dbo].[Sklad] ([id], [Tovar], [Price], [Image]) VALUES (4, N'Щетка', N'300', NULL)
+SET IDENTITY_INSERT [dbo].[Sklad] OFF
+SET IDENTITY_INSERT [dbo].[Sklad_User] ON 
+
+INSERT [dbo].[Sklad_User] ([id], [idTovar]) VALUES (1, 1)
+INSERT [dbo].[Sklad_User] ([id], [idTovar]) VALUES (2, 2)
+INSERT [dbo].[Sklad_User] ([id], [idTovar]) VALUES (3, 3)
+SET IDENTITY_INSERT [dbo].[Sklad_User] OFF
+ALTER TABLE [dbo].[Sklad_User]  WITH CHECK ADD  CONSTRAINT [FK_Sklad_User_Sklad] FOREIGN KEY([idTovar])
+REFERENCES [dbo].[Sklad] ([id])
+GO
+ALTER TABLE [dbo].[Sklad_User] CHECK CONSTRAINT [FK_Sklad_User_Sklad]
+GO
+USE [master]
+GO
+ALTER DATABASE [Koshevoi_SkladMobile] SET  READ_WRITE 
+GO
